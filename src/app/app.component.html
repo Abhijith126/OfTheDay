@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}!
+  </h1>
+</div>
+
+<h2 style="text-align: center;">Below are the top 5 most viewed Youtube Videos of the day</h2>
+
+<div *ngFor="let video of videos">
+  <div *ngIf="video?.id?.videoId !=null" style="text-align: center">
+    <h3>{{video?.snippet?.title}}</h3>
+    <youtube-player [videoId]="video?.id?.videoId" (ready)="savePlayer($event)" 
+    width="30%"
+    (change)="onStateChange($event)"></youtube-player>
+    <br>
+    <h4> Views: {{video.viewCount}}</h4>
+    <br>
+  </div>
+</div>
